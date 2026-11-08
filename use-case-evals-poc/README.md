@@ -74,6 +74,7 @@ Training data comes from three paths. **Escalations:** the teacher's steps after
 | Where | How |
 | --- | --- |
 | M5 (primary) | `train/train_mlx.sh <round> [e4b|e2b]`: mlx-lm QLoRA, `train/lora.yaml` |
+| M5, Liquid LFM3-1.7B (main student) | `train/train_lfm3.sh <round>`: mlx-vlm LoRA, merged at 6-bit with `train/fuse_vlm.py` → `models/ft-lfm3-r<round>`. `MODE=full` runs the full fine-tune instead. Results are in `RESULTS.md` |
 | M1 Max 64 GB | `train/bundle.sh <round>` → copy `gh-train-bundle-r<round>.tar.gz` → `./run.sh` (`--bf16` for full-precision LoRA) |
 | Colab | `train/colab_unsloth.ipynb` + `colab_unsloth.py` → `mlx_lm.convert -q` on the Mac |
 | AWS g6.xlarge | `train/aws/train_g6.sh <round>`, once the G-instance quota request (us-west-2, 8 vCPU) is approved; self-terminating |
@@ -86,7 +87,7 @@ harbor_env/   env.py (tools over fixtures, state diff) · agent.py (loop, hybrid
 scenarios/    generate.py · splits/*.jsonl
 judge/        judge.py (GPT judge + calibration)
 runs/         run_eval.py · tune_router.py · output/ (ignored)
-train/        build_sft.py · train_mlx.sh · lora.yaml · register.py · bundle.sh · colab_unsloth.* · aws/
+train/        build_sft.py · train_mlx.sh · train_lfm3.sh · fuse_vlm.py · lora.yaml · register.py · bundle.sh · colab_unsloth.* · aws/
 ```
 
 ## Eval report (HTML, for the demo)
