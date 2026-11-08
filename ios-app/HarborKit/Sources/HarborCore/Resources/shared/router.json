@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "max_steps": 4,
+  "confidence": {
+    "comment": "Computed over the generated action tokens. Thresholds are tuned on the calibration slice of train (use-case-evals-poc/runs/tune_router.py), never on held-out.",
+    "min_token_logprob": -6.0,
+    "mean_token_logprob": -0.35,
+    "tuned_on": "train[400:500] with ft-e4b-r1: logprobs did not separate failures from successes (best utility = validators only). Kept as a loose gate on tool-call steps only (-6 min / -0.35 mean); validators + reply grounding carry the routing. Re-tune on held-back traffic before relying on it."
+  },
+  "validators": [
+    "json_parse",
+    "known_tool",
+    "schema",
+    "member_id_matches_session",
+    "referenced_ids_exist",
+    "booking_date_not_past",
+    "service_date_not_future",
+    "reply_not_empty",
+    "reply_numbers_grounded"
+  ],
+  "policy": {
+    "claim_review_threshold": 1000,
+    "comment": "file_claim with amount over the threshold always goes to the teacher (or a human)."
+  },
+  "never_leave": {
+    "comment": "Requests that mention diagnoses or medications never leave the phone. They are answered locally or handed to a human with escalate_to_human (topic=medical), which is the insurer's own system, not a cloud model. Keyword rules are brittle: paraphrases like 'doctor say I have anxiety' slipped past the first version (found in eval, 2026-11-08). Production should add a small on-device classifier.",
+    "regex": "\\b(diagnos\\w*|medication\\w*|prescri\\w*|insulin|chemo\\w*|cancer|tumou?r|hiv|depress\\w*|anxiety|panic attacks?|adhd|bipolar|schizo\\w*|pregnan\\w*|miscarriage|diabet\\w*|asthma|arthritis|herniat\\w*|torn (?:acl|meniscus|ligament)|fractur\\w*|injur(?:y|ies|ed)|antidepressant\\w*|opioid\\w*|adderall|ozempic|metformin|lexapro|zoloft|xanax|symptom\\w*|biopsy|high blood pressure|blood pressure|(?:doctor|dr\\.?) (?:say|says|said|told me) (?:i|that i) (?:have|had|might have))\\b",
+    "flags": "i"
+  },
+  "shadow": {
+    "rate": 0.01,
+    "demo_rate": 0.15
+  },
+  "ood": {
+    "comment": "Async, in the cloud, on synced redacted traces: cosine distance to the nearest training request (embeddinggemma-300m).",
+    "model": "onnx-community/embeddinggemma-300m-ONNX",
+    "max_distance": 0.35
+  }
+}

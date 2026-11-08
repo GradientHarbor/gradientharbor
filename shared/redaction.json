@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "placeholder": "[{type}_{n}]",
+  "patterns": [
+    {"type": "MEMBER_ID", "regex": "\\bBM-\\d{5}\\b"},
+    {"type": "POLICY_ID", "regex": "\\bPOL-\\d{5}\\b"},
+    {"type": "CLAIM_ID", "regex": "\\bCLM-\\d{5}\\b"},
+    {"type": "EMAIL", "regex": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"},
+    {"type": "PHONE", "regex": "\\(?\\b\\d{3}\\)?[ .-]?\\d{3}[ .-]\\d{4}\\b"},
+    {"type": "AMOUNT", "regex": "\\$\\s?\\d[\\d,]*(?:\\.\\d{1,2})?"}
+  ],
+  "known_fields": {
+    "name": "NAME",
+    "first_name": "NAME",
+    "last_name": "NAME",
+    "dob": "DOB",
+    "phone": "PHONE",
+    "email": "EMAIL",
+    "address": "ADDRESS"
+  },
+  "amount_keys": ["amount", "amount_billed", "amount_covered"],
+  "scan": {
+    "comment": "Fail closed: if any of these still match after redaction, the payload does not leave the device.",
+    "patterns": ["MEMBER_ID", "POLICY_ID", "CLAIM_ID", "EMAIL", "PHONE", "AMOUNT"],
+    "known_fields": ["name", "last_name", "dob", "phone", "email", "address"],
+    "all_members": true
+  }
+}

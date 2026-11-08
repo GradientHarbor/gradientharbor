@@ -1,0 +1,64 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing-page",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "wrangler",
+        "dev",
+        "--port",
+        "8787",
+        "--local"
+      ],
+      "cwd": "landing-page",
+      "port": 8787
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": [
+        "run",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ],
+      "cwd": "backend",
+      "port": 8000
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5173",
+        "--host"
+      ],
+      "cwd": "frontend",
+      "port": 5173
+    },
+    {
+      "name": "device-runtime",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": [
+        "run",
+        "--with",
+        "mlx-vlm>=0.7.11",
+        "uvicorn",
+        "device_runtime.server:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8100"
+      ],
+      "cwd": "use-case-evals-poc",
+      "port": 8100
+    }
+  ]
+}

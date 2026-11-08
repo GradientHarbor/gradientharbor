@@ -1,0 +1,48 @@
+{
+  "comment": "Golden redaction vectors. Python (gradientharbor.privacy) and Swift (HarborKit Redactor) must produce exactly these outputs. Each case uses a fresh Redactor seeded with `known`; cases within one group share a Redactor so placeholder numbering carries over.",
+  "groups": [
+    {
+      "known": {
+        "name": "Owen Novak",
+        "first_name": "Owen",
+        "last_name": "Novak",
+        "dob": "1971-03-25",
+        "phone": "(408) 555-0100",
+        "email": "owen.novak@example.com",
+        "address": "7283 Gull Ct, San Jose, CA 95112"
+      },
+      "cases": [
+        {
+          "input": "Hi, I'm Owen Novak (BM-10200, policy POL-55000). Where's my claim CLM-88013? Call me at (408) 555-0100.",
+          "expected": "Hi, I'm [NAME_1] ([MEMBER_ID_1], policy [POLICY_ID_1]). Where's my claim [CLAIM_ID_1]? Call me at [PHONE_1]."
+        },
+        {
+          "input": "I need to file a claim, it was $1,250.00 for my visit on 2026-11-02. Email owen.novak@example.com",
+          "expected": "I need to file a claim, it was [AMOUNT_1] for my visit on 2026-11-02. Email [EMAIL_1]"
+        },
+        {
+          "input": "My DOB is 1971-03-25 and I live at 7283 Gull Ct, San Jose, CA 95112. Novak is my last name; owen is my first.",
+          "expected": "My DOB is [DOB_1] and I live at [ADDRESS_1]. [NAME_2] is my last name; [NAME_3] is my first."
+        }
+      ],
+      "objects": [
+        {
+          "input": {
+            "claim_id": "CLM-88013",
+            "amount_billed": 220.0,
+            "amount_covered": null,
+            "provider_name": "Dr. Sebastian Weiss",
+            "status": "denied"
+          },
+          "expected": {
+            "claim_id": "[CLAIM_ID_1]",
+            "amount_billed": "[AMOUNT_2]",
+            "amount_covered": null,
+            "provider_name": "Dr. Sebastian Weiss",
+            "status": "denied"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Output format: reply with exactly one JSON object on one line and nothing else.
+- To call a tool: {"tool": "<tool name>", "args": {<arguments>}}
+- To answer the member and finish: {"reply": "<text for the member>"}
+Tool results come back in a user turn as <tool_result name="...">{json}</tool_result>.

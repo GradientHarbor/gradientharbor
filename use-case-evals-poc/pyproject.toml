@@ -1,0 +1,31 @@
+[project]
+name = "harbor-evals"
+version = "0.1.0"
+description = "GradientHarbor simulated use case: Bayside Mutual support agent, scenarios, evals, training"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "anthropic>=1.0",
+  "openai>=2.0",
+  "httpx>=0.28",
+  "jsonschema>=4.23",
+  "mlx-lm>=0.32.2",
+  "gradientharbor",
+  "fastapi>=0.115",
+  "uvicorn>=0.32",
+]
+
+[tool.uv.sources]
+gradientharbor = { path = "../backend/sdk", editable = true }
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["harbor_env"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

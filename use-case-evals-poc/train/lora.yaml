@@ -1,0 +1,19 @@
+# mlx-lm LoRA config for the GradientHarbor student (Gemma 4 E4B / E2B, MLX 4-bit base = QLoRA).
+fine_tune_type: lora
+num_layers: 16
+batch_size: 4
+grad_accumulation_steps: 2
+iters: 160   # train_mlx.sh overrides with ~2.5 epochs for the dataset size
+learning_rate: 1.0e-4
+max_seq_length: 2048
+mask_prompt: true
+grad_checkpoint: true
+steps_per_report: 10
+steps_per_eval: 40
+val_batches: 8
+save_every: 80
+seed: 7
+lora_parameters:
+  rank: 16
+  scale: 20.0
+  dropout: 0.0

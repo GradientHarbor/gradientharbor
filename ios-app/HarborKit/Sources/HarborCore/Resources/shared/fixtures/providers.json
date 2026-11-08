@@ -1,0 +1,1402 @@
+[
+  {
+    "provider_id": "PRV-301",
+    "name": "Dr. Marisol Iverson",
+    "clinic": "Oakland Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-302",
+    "name": "Dr. Percival Sorensen",
+    "clinic": "San Mateo Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-303",
+    "name": "Dr. Isadora Petrov",
+    "clinic": "San Jose Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-304",
+    "name": "Dr. Bernard Thornton",
+    "clinic": "Palo Alto Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-305",
+    "name": "Dr. Katarina Ashby",
+    "clinic": "Fremont Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "Fremont",
+    "in_network_plans": [
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-306",
+    "name": "Dr. Sebastian Weiss",
+    "clinic": "Oakland Dental",
+    "specialty": "dentist",
+    "service": "dental_cleaning",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-307",
+    "name": "Dr. Celeste Quintero",
+    "clinic": "Palo Alto Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-308",
+    "name": "Dr. Celeste Zielinski",
+    "clinic": "Fremont Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-309",
+    "name": "Dr. Horace Farouk",
+    "clinic": "Oakland Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-310",
+    "name": "Dr. Ulysses Cruz",
+    "clinic": "San Mateo Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-311",
+    "name": "Dr. Percival Bergstrom",
+    "clinic": "San Jose Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "San Jose",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-312",
+    "name": "Dr. Evangeline Bhatt",
+    "clinic": "Palo Alto Dermatology",
+    "specialty": "dermatologist",
+    "service": "dermatology",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-313",
+    "name": "Dr. Rosalind Gallagher",
+    "clinic": "San Mateo Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-314",
+    "name": "Dr. Fletcher Dahl",
+    "clinic": "San Jose Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "San Jose",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-315",
+    "name": "Dr. Nathaniel Esposito",
+    "clinic": "Palo Alto Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-316",
+    "name": "Dr. Marisol Lefevre",
+    "clinic": "Fremont Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-317",
+    "name": "Dr. Celeste Xu",
+    "clinic": "Oakland Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-318",
+    "name": "Dr. Rosalind Dimitrov",
+    "clinic": "San Mateo Physical Therapy",
+    "specialty": "physical_therapist",
+    "service": "physical_therapy",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-319",
+    "name": "Dr. Winston Ueda",
+    "clinic": "Fremont Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-320",
+    "name": "Dr. Celeste Coleman",
+    "clinic": "Oakland Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-321",
+    "name": "Dr. Nathaniel Nilsson",
+    "clinic": "San Mateo Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-322",
+    "name": "Dr. Jasper Valdez",
+    "clinic": "San Jose Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-323",
+    "name": "Dr. Fletcher Yilmaz",
+    "clinic": "Palo Alto Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-324",
+    "name": "Dr. Katarina Alvarez",
+    "clinic": "Fremont Family Medicine",
+    "specialty": "primary_care",
+    "service": "primary_care",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-325",
+    "name": "Dr. Percival Reyes",
+    "clinic": "San Jose Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-326",
+    "name": "Dr. Leopold Mendez",
+    "clinic": "Palo Alto Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-327",
+    "name": "Dr. Ophelia Jaramillo",
+    "clinic": "Fremont Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-328",
+    "name": "Dr. Georgina Hoang",
+    "clinic": "Oakland Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-329",
+    "name": "Dr. Sebastian Oduya",
+    "clinic": "San Mateo Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-330",
+    "name": "Dr. Evangeline Kimura",
+    "clinic": "San Jose Heart Center",
+    "specialty": "cardiologist",
+    "service": "specialist",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-331",
+    "name": "Dr. Katarina Iverson",
+    "clinic": "Oakland Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-332",
+    "name": "Dr. Bernard Sorensen",
+    "clinic": "San Mateo Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-333",
+    "name": "Dr. Celeste Petrov",
+    "clinic": "San Jose Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-334",
+    "name": "Dr. Nathaniel Thornton",
+    "clinic": "Palo Alto Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-335",
+    "name": "Dr. Nathaniel Ashby",
+    "clinic": "Fremont Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-336",
+    "name": "Dr. Desmond Weiss",
+    "clinic": "Oakland Eye Care",
+    "specialty": "optometrist",
+    "service": "vision_exam",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-337",
+    "name": "Dr. Georgina Quintero",
+    "clinic": "Palo Alto Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-338",
+    "name": "Dr. Percival Zielinski",
+    "clinic": "Fremont Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "Fremont",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-339",
+    "name": "Dr. Georgina Farouk",
+    "clinic": "Oakland Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-340",
+    "name": "Dr. Ophelia Cruz",
+    "clinic": "San Mateo Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-341",
+    "name": "Dr. Ophelia Bergstrom",
+    "clinic": "San Jose Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-342",
+    "name": "Dr. Georgina Bhatt",
+    "clinic": "Palo Alto Chiropractic",
+    "specialty": "chiropractor",
+    "service": "chiropractic",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-343",
+    "name": "Dr. Katarina Gallagher",
+    "clinic": "San Mateo Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-344",
+    "name": "Dr. Sebastian Dahl",
+    "clinic": "San Jose Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-345",
+    "name": "Dr. Leopold Esposito",
+    "clinic": "Palo Alto Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-346",
+    "name": "Dr. Leopold Lefevre",
+    "clinic": "Fremont Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-347",
+    "name": "Dr. Marisol Xu",
+    "clinic": "Oakland Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-348",
+    "name": "Dr. Isadora Dimitrov",
+    "clinic": "San Mateo Counseling",
+    "specialty": "therapist",
+    "service": "mental_health",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-349",
+    "name": "Dr. Theodora Ueda",
+    "clinic": "Fremont Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-350",
+    "name": "Dr. Sebastian Coleman",
+    "clinic": "Oakland Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "Oakland",
+    "in_network_plans": [
+      "bronze"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-351",
+    "name": "Dr. Percival Nilsson",
+    "clinic": "San Mateo Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": false,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-352",
+    "name": "Dr. Desmond Valdez",
+    "clinic": "San Jose Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "San Jose",
+    "in_network_plans": [
+      "gold"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-353",
+    "name": "Dr. Bernard Yilmaz",
+    "clinic": "Palo Alto Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-354",
+    "name": "Dr. Ulysses Alvarez",
+    "clinic": "Fremont Orthopedics",
+    "specialty": "orthopedist",
+    "service": "specialist",
+    "city": "Fremont",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-355",
+    "name": "Dr. Sebastian Reyes",
+    "clinic": "San Jose Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      3
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-356",
+    "name": "Dr. Jasper Mendez",
+    "clinic": "Palo Alto Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "Palo Alto",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-357",
+    "name": "Dr. Evangeline Jaramillo",
+    "clinic": "Fremont Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "Fremont",
+    "in_network_plans": [
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-358",
+    "name": "Dr. Isadora Hoang",
+    "clinic": "Oakland Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "Oakland",
+    "in_network_plans": [
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-359",
+    "name": "Dr. Nathaniel Oduya",
+    "clinic": "San Mateo Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "San Mateo",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  {
+    "provider_id": "PRV-360",
+    "name": "Dr. Katarina Kimura",
+    "clinic": "San Jose Acupuncture",
+    "specialty": "acupuncturist",
+    "service": "acupuncture",
+    "city": "San Jose",
+    "in_network_plans": [
+      "bronze",
+      "gold",
+      "silver"
+    ],
+    "accepting_new_patients": true,
+    "working_days": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  }
+]

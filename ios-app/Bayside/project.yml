@@ -1,0 +1,57 @@
+# XcodeGen spec: `xcodegen generate` in this folder creates Bayside.xcodeproj.
+name: Bayside
+options:
+  bundleIdPrefix: com.gradientharbor
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+packages:
+  HarborKit:
+    path: ../HarborKit
+targets:
+  Bayside:
+    type: application
+    platform: iOS
+    sources:
+      - path: Bayside
+    dependencies:
+      - package: HarborKit
+        product: HarborCore
+      - package: HarborKit
+        product: HarborMLX
+    entitlements:
+      path: Bayside/Bayside.entitlements
+      properties:
+        # The 5.5 GB student needs more than the default app memory limit.
+        com.apple.developer.kernel.increased-memory-limit: true
+    info:
+      path: Bayside/Info.plist
+      properties:
+        CFBundleDisplayName: Bayside
+        # Side-load the model into Documents/Models via Finder / Files / devicectl.
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        CFBundleURLTypes:
+          - CFBundleURLName: com.gradientharbor.bayside
+            CFBundleURLSchemes: [bayside]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        # The Simulator reaches the device runtime and backend on the Mac over plain HTTP.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+          NSAllowsArbitraryLoads: true
+        NSLocalNetworkUsageDescription: Bayside connects to the GradientHarbor runtime and backend on your local network.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gradientharbor.bayside
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: QNV5826RKW
+        ENABLE_PREVIEWS: YES

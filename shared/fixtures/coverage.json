@@ -1,0 +1,470 @@
+{
+  "bronze": {
+    "primary_care": {
+      "label": "Primary care visit",
+      "covered": true,
+      "copay": 40,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "specialist": {
+      "label": "Specialist visit",
+      "covered": true,
+      "copay": 80,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "dermatology": {
+      "label": "Dermatology visit",
+      "covered": true,
+      "copay": 80,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "dental_cleaning": {
+      "label": "Dental cleaning",
+      "covered": false,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 2,
+      "out_of_network": "not covered"
+    },
+    "dental_filling": {
+      "label": "Dental filling",
+      "covered": false,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "physical_therapy": {
+      "label": "Physical therapy",
+      "covered": true,
+      "copay": 60,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 20,
+      "out_of_network": "not covered"
+    },
+    "mental_health": {
+      "label": "Mental health therapy",
+      "covered": true,
+      "copay": 40,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "chiropractic": {
+      "label": "Chiropractic care",
+      "covered": false,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 12,
+      "out_of_network": "not covered"
+    },
+    "vision_exam": {
+      "label": "Eye exam",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 1,
+      "out_of_network": "not covered"
+    },
+    "urgent_care": {
+      "label": "Urgent care",
+      "covered": true,
+      "copay": 100,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "mri": {
+      "label": "MRI / advanced imaging",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.4,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": true,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "acupuncture": {
+      "label": "Acupuncture",
+      "covered": false,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 10,
+      "out_of_network": "not covered"
+    },
+    "telehealth": {
+      "label": "Telehealth visit",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    },
+    "lab_work": {
+      "label": "Lab work",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.3,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "not covered"
+    }
+  },
+  "silver": {
+    "primary_care": {
+      "label": "Primary care visit",
+      "covered": true,
+      "copay": 25,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "specialist": {
+      "label": "Specialist visit",
+      "covered": true,
+      "copay": 50,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dermatology": {
+      "label": "Dermatology visit",
+      "covered": true,
+      "copay": 50,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dental_cleaning": {
+      "label": "Dental cleaning",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 2,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dental_filling": {
+      "label": "Dental filling",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.3,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "physical_therapy": {
+      "label": "Physical therapy",
+      "covered": true,
+      "copay": 40,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 20,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "mental_health": {
+      "label": "Mental health therapy",
+      "covered": true,
+      "copay": 25,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "chiropractic": {
+      "label": "Chiropractic care",
+      "covered": true,
+      "copay": 45,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 12,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "vision_exam": {
+      "label": "Eye exam",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 1,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "urgent_care": {
+      "label": "Urgent care",
+      "covered": true,
+      "copay": 75,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "mri": {
+      "label": "MRI / advanced imaging",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.3,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": true,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "acupuncture": {
+      "label": "Acupuncture",
+      "covered": false,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 10,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "telehealth": {
+      "label": "Telehealth visit",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "lab_work": {
+      "label": "Lab work",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.2,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    }
+  },
+  "gold": {
+    "primary_care": {
+      "label": "Primary care visit",
+      "covered": true,
+      "copay": 10,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "specialist": {
+      "label": "Specialist visit",
+      "covered": true,
+      "copay": 30,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dermatology": {
+      "label": "Dermatology visit",
+      "covered": true,
+      "copay": 30,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": true,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dental_cleaning": {
+      "label": "Dental cleaning",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 2,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "dental_filling": {
+      "label": "Dental filling",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.2,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "physical_therapy": {
+      "label": "Physical therapy",
+      "covered": true,
+      "copay": 20,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 20,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "mental_health": {
+      "label": "Mental health therapy",
+      "covered": true,
+      "copay": 10,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "chiropractic": {
+      "label": "Chiropractic care",
+      "covered": true,
+      "copay": 25,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 12,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "vision_exam": {
+      "label": "Eye exam",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 1,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "urgent_care": {
+      "label": "Urgent care",
+      "covered": true,
+      "copay": 50,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "mri": {
+      "label": "MRI / advanced imaging",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.1,
+      "applies_to_deductible": true,
+      "requires_referral": false,
+      "requires_prior_auth": true,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "acupuncture": {
+      "label": "Acupuncture",
+      "covered": true,
+      "copay": 30,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": 10,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "telehealth": {
+      "label": "Telehealth visit",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    },
+    "lab_work": {
+      "label": "Lab work",
+      "covered": true,
+      "copay": 0,
+      "coinsurance": 0.0,
+      "applies_to_deductible": false,
+      "requires_referral": false,
+      "requires_prior_auth": false,
+      "visit_limit_per_year": null,
+      "out_of_network": "covered at 50% after deductible"
+    }
+  }
+}

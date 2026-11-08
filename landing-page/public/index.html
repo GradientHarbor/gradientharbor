@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GradientHarbor — hybrid inference and continuous learning for on-device AI agents</title>
+  <meta name="description" content="The hybrid inference and continuous learning platform for on-device AI agents. The phone answers first, private by default. The cloud handles what it can't, and every escalation trains the next on-device model." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="canonical" href="https://gradientharbor.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="GradientHarbor — hybrid inference and continuous learning for on-device AI agents" />
+  <meta property="og:description" content="The phone answers first, private by default. The cloud handles what it can't, and every escalation trains the next model." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gradientharbor.com/" />
+  <meta property="og:site_name" content="GradientHarbor" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/" aria-label="GradientHarbor home">
+        <img src="/logo-icon.svg" alt="" width="28" height="28" />
+        <span>GradientHarbor</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#privacy">Data safety</a>
+        <a href="#demo">Demo</a>
+        <a href="#results">Results</a>
+        <a href="#models">Models</a>
+        <a class="nav-bi" href="/bi/">BI product</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <a class="eyebrow" href="https://www.agihouse.org/events/lenovo-x-agi-house-build-day" target="_blank" rel="noopener">
+            <span class="dot"></span> Lenovo × AGI House Build Day · Nov 8, 2026
+          </a>
+          <p class="category">The hybrid inference and continuous learning platform for on-device AI agents</p>
+          <h1>On-device agents that <span class="grad">learn from the cloud</span>.</h1>
+          <p class="lede">
+            Wrap your app's agent in one line. The phone answers first, private by default. A frontier
+            model in the cloud handles what the phone can't, and every escalation trains the next
+            on-device model.
+          </p>
+          <p class="lede lede-2">Over time the phone handles most requests: fast, offline, private. Whatever still leaves the device is redacted and logged.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#how">See how it works</a>
+            <a class="btn btn-ghost" href="#demo">Watch the demo</a>
+          </div>
+          <ul class="hero-tags" aria-label="Focus areas">
+            <li>On-device inference</li>
+            <li>Optimization</li>
+            <li>Data safety</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="phone" aria-label="Illustration: support chat inside a mock insurance app">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="app-bar">
+                <span class="app-title">Member Support</span>
+                <span class="net"><span class="net-dot"></span>Airplane mode</span>
+              </div>
+              <div class="chat">
+                <div class="msg user">Move my dentist appointment to Friday</div>
+                <div class="tool"><code>reschedule_appointment(day: "Fri")</code></div>
+                <div class="msg bot">Done. Your dentist visit is now Friday at 10:30.</div>
+                <div class="route route-local"><span></span>Handled on device</div>
+                <div class="msg user">I want to appeal my denied claim</div>
+                <div class="route route-cloud"><span></span>Escalated · redacted · logged</div>
+                <div class="msg bot">I've flagged this for review. I'll finish when you're back online.</div>
+              </div>
+            </div>
+          </div>
+          <p class="visual-note">Illustration. Real screenshots from the demo app are below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="band">
+      <div class="wrap band-grid">
+        <p class="band-lead">Today, an app's support agent sends every message to a frontier model.</p>
+        <ul class="costs">
+          <li><strong>Seconds</strong><span>of latency on every turn</span></li>
+          <li><strong>Per-message</strong><span>bill that grows with usage</span></li>
+          <li><strong>Members' data</strong><span>leaves the phone each time</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <p class="kicker">How it works</p>
+        <h2>The phone answers first. The cloud teaches.</h2>
+        <p class="sub">Every request hits the router first. Confident ones stay on the device; the rest go to the teacher, whose answer goes back to the app and also becomes a training label. Each round, a new adapter ships to the phone, so fewer requests need the cloud.</p>
+
+        <figure class="diagram">
+          <!-- Wide layout -->
+          <svg class="diagram-wide" viewBox="0 0 1000 440" role="img" aria-labelledby="dwTitle dwDesc">
+            <title id="dwTitle">GradientHarbor loop</title>
+            <desc id="dwDesc">On the phone, a request goes to the router. Confident requests are answered by the on-device student. Others are redacted and sent to the cloud teacher. Teacher answers become redacted training labels; the trainer ships a new adapter back to the student each round.</desc>
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+              <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-accent"/></marker>
+            </defs>
+            <rect class="lane lane-device" x="10" y="20" width="520" height="400" rx="20"/>
+            <text class="lane-label" x="34" y="54">ON THE PHONE</text>
+            <rect class="lane lane-cloud" x="570" y="20" width="420" height="400" rx="20"/>
+            <text class="lane-label" x="594" y="54">IN THE CLOUD</text>
+
+            <g class="node"><rect x="36" y="196" width="120" height="60" rx="12"/><text x="96" y="223" class="n-t">Request</text><text x="96" y="242" class="n-s">from the app</text></g>
+            <g class="node node-key"><rect x="196" y="190" width="150" height="72" rx="12"/><text x="271" y="221" class="n-t">Router</text><text x="271" y="241" class="n-s">confidence · validators</text></g>
+            <g class="node node-student"><rect x="376" y="84" width="134" height="76" rx="12"/><text x="443" y="114" class="n-t">Student</text><text x="443" y="134" class="n-s">LFM3-1.7B · MLX</text><text x="443" y="150" class="n-s">answers locally</text></g>
+            <g class="node"><rect x="376" y="296" width="134" height="64" rx="12"/><text x="443" y="324" class="n-t">Redactor</text><text x="443" y="343" class="n-s">PII → placeholders</text></g>
+
+            <g class="node"><rect x="600" y="296" width="150" height="64" rx="12"/><text x="675" y="324" class="n-t">Teacher</text><text x="675" y="343" class="n-s">frontier model</text></g>
+            <g class="node"><rect x="810" y="296" width="150" height="64" rx="12"/><text x="885" y="324" class="n-t">Dataset</text><text x="885" y="343" class="n-s">redacted traces</text></g>
+            <g class="node"><rect x="810" y="84" width="150" height="76" rx="12"/><text x="885" y="114" class="n-t">Trainer</text><text x="885" y="134" class="n-s">LoRA fine-tune</text><text x="885" y="150" class="n-s">every round</text></g>
+
+            <path class="edge" d="M156,226 L192,226" marker-end="url(#ah)"/>
+            <path class="edge" d="M300,190 C300,140 330,122 372,122" marker-end="url(#ah)"/>
+            <text class="e-l" x="300" y="150">confident</text>
+            <path class="edge" d="M300,262 C300,312 330,328 372,328" marker-end="url(#ah)"/>
+            <text class="e-l" x="300" y="306">escalate</text>
+            <path class="edge" d="M510,328 L596,328" marker-end="url(#ah)"/>
+            <text class="e-l" x="553" y="318">redacted</text>
+            <path class="edge edge-dash" d="M675,360 C675,396 470,396 443,364" marker-end="url(#ah)"/>
+            <text class="e-l" x="566" y="404">answer, re-filled on the phone</text>
+            <path class="edge" d="M750,328 L806,328" marker-end="url(#ah)"/>
+            <text class="e-l" x="778" y="318">label</text>
+            <path class="edge" d="M885,296 L885,164" marker-end="url(#ah)"/>
+            <path class="edge edge-accent" d="M810,122 L514,122" marker-end="url(#ahA)"/>
+            <text class="e-l e-accent" x="662" y="112">new adapter → fewer escalations</text>
+          </svg>
+
+          <!-- Narrow layout -->
+          <svg class="diagram-narrow" viewBox="0 0 360 672" role="img" aria-labelledby="dnTitle">
+            <title id="dnTitle">GradientHarbor loop (stacked)</title>
+            <defs>
+              <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+              <marker id="ahA2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-accent"/></marker>
+            </defs>
+            <rect class="lane lane-device" x="4" y="4" width="352" height="330" rx="18"/>
+            <text class="lane-label" x="22" y="32">ON THE PHONE</text>
+            <rect class="lane lane-cloud" x="4" y="366" width="352" height="302" rx="18"/>
+            <text class="lane-label" x="22" y="652">IN THE CLOUD</text>
+
+            <g class="node"><rect x="22" y="52" width="136" height="58" rx="12"/><text x="90" y="78" class="n-t">Request</text><text x="90" y="96" class="n-s">from the app</text></g>
+            <g class="node node-key"><rect x="202" y="52" width="136" height="58" rx="12"/><text x="270" y="78" class="n-t">Router</text><text x="270" y="96" class="n-s">confidence gates</text></g>
+            <g class="node node-student"><rect x="22" y="196" width="136" height="72" rx="12"/><text x="90" y="224" class="n-t">Student</text><text x="90" y="242" class="n-s">LFM3-1.7B · MLX</text><text x="90" y="257" class="n-s">answers locally</text></g>
+            <g class="node"><rect x="202" y="196" width="136" height="58" rx="12"/><text x="270" y="222" class="n-t">Redactor</text><text x="270" y="240" class="n-s">PII → placeholders</text></g>
+
+            <g class="node"><rect x="202" y="416" width="136" height="58" rx="12"/><text x="270" y="442" class="n-t">Teacher</text><text x="270" y="460" class="n-s">frontier model</text></g>
+            <g class="node"><rect x="202" y="560" width="136" height="58" rx="12"/><text x="270" y="586" class="n-t">Dataset</text><text x="270" y="604" class="n-s">redacted traces</text></g>
+            <g class="node"><rect x="22" y="556" width="136" height="66" rx="12"/><text x="90" y="582" class="n-t">Trainer</text><text x="90" y="600" class="n-s">LoRA, every round</text></g>
+
+            <path class="edge" d="M158,81 L198,81" marker-end="url(#ah2)"/>
+            <path class="edge" d="M240,110 C240,160 160,150 120,192" marker-end="url(#ah2)"/>
+            <text class="e-l" x="176" y="146">confident</text>
+            <path class="edge" d="M300,110 L300,192" marker-end="url(#ah2)"/>
+            <text class="e-l" x="308" y="156" text-anchor="start">escalate</text>
+            <path class="edge" d="M270,254 L270,412" marker-end="url(#ah2)"/>
+            <text class="e-l" x="310" y="352">redacted</text>
+            <path class="edge" d="M270,474 L270,556" marker-end="url(#ah2)"/>
+            <text class="e-l" x="296" y="520">label</text>
+            <path class="edge" d="M202,589 L162,589" marker-end="url(#ah2)"/>
+            <path class="edge edge-accent" d="M90,556 L90,272" marker-end="url(#ahA2)"/>
+            <text class="e-l e-accent" x="108" y="500" text-anchor="start" transform="rotate(-90 108 500)">new adapter</text>
+          </svg>
+        </figure>
+
+        <ol class="steps">
+          <li><span class="step-n">1</span><h3>Route</h3><p>Student confidence (token logprobs) and output validators gate each request live on the phone. Out-of-distribution checks run asynchronously in the cloud.</p></li>
+          <li><span class="step-n">2</span><h3>Escalate, redacted</h3><p>Hard requests go to the teacher right away, with names, IDs and amounts swapped for placeholders first.</p></li>
+          <li><span class="step-n">3</span><h3>Learn off the request path</h3><p>Teacher answers and a 1% shadow sample become training data. Labeling and retraining never slow a reply.</p></li>
+          <li><span class="step-n">4</span><h3>Ship a new adapter</h3><p>Each round, a LoRA-tuned student lands on the phone and the share of escalated requests falls.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ONE LINE -->
+    <section class="section section-alt" id="code">
+      <div class="wrap code-grid">
+        <div>
+          <p class="kicker">One line</p>
+          <h2>Wrap the agent you already have.</h2>
+          <p class="sub">GradientHarbor sits around an OpenAI-compatible client in Python, or HarborKit in Swift on iOS. It captures messages, tool calls and outcomes, and every response tells you which model answered and why.</p>
+          <ul class="checks">
+            <li>Nothing else in the app changes</li>
+            <li>The cloud keeps serving until the student is ready</li>
+            <li>Bring any teacher, including open-weight models</li>
+          </ul>
+        </div>
+        <div class="code-card">
+          <div class="tabs" role="tablist" aria-label="Language">
+            <button role="tab" aria-selected="true" aria-controls="code-swift" id="tab-swift">Swift · HarborKit</button>
+            <button role="tab" aria-selected="false" aria-controls="code-py" id="tab-py" tabindex="-1">Python</button>
+          </div>
+<pre id="code-swift" role="tabpanel" aria-labelledby="tab-swift"><code><span class="k">let</span> agent = Harbor.<span class="f">wrap</span>(student: .<span class="f">local</span>(<span class="s">"lfm3-1.7b-insurance"</span>),
+                        teacher: .<span class="f">cloud</span>(teacherURL), task: <span class="s">"member-support"</span>)
+<span class="k">let</span> reply = <span class="k">try await</span> agent.<span class="f">respond</span>(to: message, tools: tools)
+reply.route   <span class="c">// .student or .teacher, plus the gate that fired</span></code></pre>
+<pre id="code-py" role="tabpanel" aria-labelledby="tab-py" hidden><code><span class="k">from</span> gradientharbor <span class="k">import</span> wrap
+
+client = <span class="f">wrap</span>(OpenAI(), task=<span class="s">"support-agent"</span>,
+              teacher=<span class="s">"&lt;frontier-model&gt;"</span>, student=<span class="s">"lfm2-1.2b-support"</span>)
+resp = client.chat.completions.<span class="f">create</span>(model=<span class="s">"auto"</span>, messages=msgs, tools=tools)
+resp.harbor.route   <span class="c"># "student" | "teacher", plus the gate that fired</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="section" id="focus">
+      <div class="wrap">
+        <p class="kicker">Focus</p>
+        <h2>Built for the edge, not just cheaper in the cloud.</h2>
+        <div class="pillars">
+          <article class="pillar">
+            <div class="p-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg>
+            </div>
+            <h3>On-device inference</h3>
+            <p>The student runs inside the app on an iPhone Air (A19 Pro, 12 GB) via MLX Swift, and keeps working in airplane mode.</p>
+          </article>
+          <article class="pillar">
+            <div class="p-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+            </div>
+            <h3>Optimization</h3>
+            <p>Distill into the smallest model that holds accuracy, drop reasoning tokens, shorten tool prompts, quantize to 4-bit and cache the fixed prompt prefix.</p>
+          </article>
+          <article class="pillar">
+            <div class="p-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Data safety</h3>
+            <p>Customer data stays on the device by default. What leaves is redacted first, limited to escalations and opt-in traces, and shown in a privacy ledger.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="section section-alt" id="privacy">
+      <div class="wrap privacy-grid">
+        <div>
+          <p class="kicker">Data safety</p>
+          <h2>Data leaves only when it has to, and you can see every time it does.</h2>
+          <ul class="rules">
+            <li><strong>Local by default.</strong> Traces are encrypted at rest on the device. Nothing syncs without opt-in.</li>
+            <li><strong>Redact before escalation.</strong> Names, member and policy IDs, birth dates, phone numbers and claim amounts become placeholders. The phone fills the real values back in locally.</li>
+            <li><strong>Never-leave intents.</strong> A request that mentions a diagnosis or medication is answered on the phone or handed to a human, never sent to the cloud.</li>
+            <li><strong>Train only on redacted traces.</strong> Any trace where the PII scanner still finds a match is rejected.</li>
+            <li><strong>Fail closed.</strong> If the outgoing scan flags a request, it doesn't leave the phone.</li>
+          </ul>
+        </div>
+        <div class="ledger" aria-label="Example privacy ledger entry">
+          <div class="ledger-head">
+            <span>Privacy ledger</span>
+            <span class="ledger-tag">example entry</span>
+          </div>
+          <dl class="ledger-row">
+            <dt>Gate</dt><dd><span class="pill pill-warn">out of distribution</span></dd>
+            <dt>Sent to cloud</dt>
+            <dd><code>Appeal the denial of claim <mark>[CLAIM_ID_1]</mark> for member <mark>[MEMBER_ID_1]</mark>, amount <mark>[AMOUNT_1]</mark>.</code></dd>
+            <dt>Kept on phone</dt><dd>Real IDs, name, amount</dd>
+            <dt>Raw PII fields sent</dt><dd><strong class="zero">0</strong></dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section class="section" id="demo">
+      <div class="wrap">
+        <p class="kicker">Demo</p>
+        <h2>A support agent inside a mock insurance app.</h2>
+        <p class="sub">A fictional insurer's iOS app with Policy, Claims, Appointments and a Support chat. The agent has eight mock tools over the member's local data. In the demo the app runs in the iPhone Simulator and the fine-tuned model runs on the laptop with MLX, the same weights the phone loads. When it books or moves an appointment, the Appointments screen updates. Insurance and health data are the strongest case for keeping work on the device.</p>
+        <ul class="tools" aria-label="Agent tools">
+          <li><code>get_policy</code></li><li><code>check_coverage</code></li><li><code>get_claim_status</code></li><li><code>file_claim</code></li>
+          <li><code>find_provider</code></li><li><code>book_appointment</code></li><li><code>reschedule_appointment</code></li><li><code>escalate_to_human</code></li>
+        </ul>
+
+        <div class="shots">
+          <figure class="shot" data-src="/screenshots/support-chat.png">
+            <div class="shot-frame"><div class="shot-ph"><span>Screenshot coming soon</span></div></div>
+            <figcaption><strong>Support chat</strong> “Move my eye exam to Friday”, confirmed and handled on the device.</figcaption>
+          </figure>
+          <figure class="shot" data-src="/screenshots/privacy-ledger.png">
+            <div class="shot-frame"><div class="shot-ph"><span>Screenshot coming soon</span></div></div>
+            <figcaption><strong>Privacy ledger</strong> The cloud saw <code>[AMOUNT_1]</code>, not the real amount. 0 raw personal fields sent.</figcaption>
+          </figure>
+          <figure class="shot" data-src="/screenshots/airplane-mode.png">
+            <div class="shot-frame"><div class="shot-ph"><span>Screenshot coming soon</span></div></div>
+            <figcaption><strong>Airplane mode</strong> Routine requests keep working; the rest is flagged and queued for review.</figcaption>
+          </figure>
+        </div>
+        <figure class="wide-shot" data-src="/screenshots/dashboard.png">
+          <div class="wide-frame"><div class="shot-ph"><span>Dashboard screenshot coming soon</span></div></div>
+          <figcaption><strong>Flywheel dashboard</strong> Escalation rate per round (100% → 20% → 16%), task success by model, latency and privacy.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section section-alt" id="results">
+      <div class="wrap">
+        <p class="kicker">Results</p>
+        <h2>Measured, not promised.</h2>
+        <p class="sub">From the overnight run on November 8: the same 152 synthetic member requests for every setup, scored against ground truth. Phone latency and battery come from the app's eval mode next.</p>
+        <div class="metrics">
+          <div class="metric"><span class="m-v" data-metric="success">94.1%</span><span class="m-l">Task success, fine-tuned Gemma 4 E4B + router (Sonnet alone: 97.4%, untrained E4B: 64.5%)</span></div>
+          <div class="metric"><span class="m-v" data-metric="escalation">16.4%</span><span class="m-l">Share of requests sent to the cloud in round 2 (round 0: 100%, round 1: 20.4%)</span></div>
+          <div class="metric"><span class="m-v" data-metric="local">95.3%</span><span class="m-l">Task success on requests the router kept on the device</span></div>
+          <div class="metric"><span class="m-v m-target" data-metric="pii">0</span><span class="m-l">Raw personal fields sent to the cloud (1,768 calls re-scanned)</span></div>
+          <div class="metric"><span class="m-v" data-metric="offline">86.8%</span><span class="m-l">Task success with no network (fine-tuned model alone)</span></div>
+          <div class="metric"><span class="m-v" data-metric="prompt">−58%</span><span class="m-l">Prompt tokens per step after fine-tuning (2,293 → ~970)</span></div>
+        </div>
+
+        <h3 class="r-h">Every configuration, same 152 requests</h3>
+        <div class="r-scroll" role="region" aria-label="Results by configuration" tabindex="0">
+          <table class="r-table">
+            <thead><tr><th scope="col">Configuration</th><th scope="col">Task success</th><th scope="col">Held-out</th><th scope="col">Novel</th><th scope="col">Sent to cloud</th><th scope="col">p50 / step</th><th scope="col">Cloud cost</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Sonnet 5.5 (cloud only)</th><td>97.4%</td><td>100%</td><td>100%</td><td>100%</td><td>1.31 s</td><td>$1.91</td></tr>
+              <tr><th scope="row">Gemma 4 E4B, no fine-tuning</th><td>64.5%</td><td>73.5%</td><td>51.7%</td><td>0%</td><td>2.96 s</td><td>$0</td></tr>
+              <tr><th scope="row">E4B fine-tuned, round 2</th><td>86.8%</td><td>94.9%</td><td>75.9%</td><td>0%</td><td>2.35 s</td><td>$0</td></tr>
+              <tr><th scope="row">E4B fine-tuned + router, round 1</th><td>86.8%</td><td>96.9%</td><td>58.6%</td><td>20.4%</td><td>2.38 s</td><td>$0.73</td></tr>
+              <tr class="r-best"><th scope="row">E4B fine-tuned + router, round 2</th><td>94.1%</td><td>98.0%</td><td>89.7%</td><td>16.4%</td><td>2.35 s</td><td>$0.71</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="r-note">On-device latency is measured on an M5 Mac with MLX, standing in for the phone. Every run sent 0 raw personal fields to the cloud.</p>
+
+        <h3 class="r-h">The flywheel, round by round</h3>
+        <ol class="rounds">
+          <li><span class="rd">Round 0</span><span class="rv">100%</span><span class="rl">sent to the cloud. Sonnet serves everything, 97.4% success</span></li>
+          <li><span class="rd">Round 1</span><span class="rv">20.4%</span><span class="rl">sent to the cloud after training on 250 Sonnet traces, 86.8% success</span></li>
+          <li><span class="rd">Round 2</span><span class="rv">16.4%</span><span class="rl">sent to the cloud after adding escalations from live traffic, 94.1% success</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MODELS -->
+    <section class="section" id="models">
+      <div class="wrap">
+        <p class="kicker">Models</p>
+        <h2>A model for every job.</h2>
+        <p class="sub">The student on the device is picked per app and platform; our main one is Liquid AI's LFM3-1.7B. In the cloud, one model teaches and another answers live, so each does the job it's best at.</p>
+        <div class="mtree" role="group" aria-label="Model lineup: your agent splits into on-device students and cloud models">
+          <div class="mt-root"><strong>Your agent</strong><code>Harbor.wrap(…)</code></div>
+          <div class="mt-branches">
+            <div class="mt-branch mt-device">
+              <div class="mt-l1">On the device</div>
+              <ul class="mt-leaves">
+              <li class="mt-leaf"><span class="mt-tag">Main student</span><strong>Liquid LFM3-1.7B</strong><span>+ LoRA merged, MLX, 1.4 GB. About a second per step.</span></li>
+              <li class="mt-leaf"><span class="mt-tag">Large option</span><strong>Gemma 4 E4B</strong><span>+ LoRA, MLX 4-bit, 5.5 GB. Our flywheel runs.</span></li>
+              <li class="mt-leaf mt-next"><span class="mt-tag">Android · NPU</span><strong>LiteRT-LM</strong><span>Same weights, NPU via ZETIC. Next.</span></li>
+              </ul>
+            </div>
+            <div class="mt-branch mt-cloud">
+              <div class="mt-l1">In the cloud</div>
+              <ul class="mt-leaves">
+              <li class="mt-leaf mt-teacher"><span class="mt-tag">Teacher</span><strong>Claude Opus 5.5</strong><span>Labels escalations, shadow disagreements and outliers.</span></li>
+              <li class="mt-leaf"><span class="mt-tag">Escalation</span><strong>Claude Sonnet 5.5</strong><span>Answers live when the router escalates.</span></li>
+              <li class="mt-leaf"><span class="mt-tag">Eval</span><strong>GPT-6.1 judge</strong><span>Another provider grades replies.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="mt-note">Opus labels training data from round 3. Rounds 0–2 were labelled by Sonnet 5.5, as in the results above. Dashed: not built yet.</p>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section section-alt" id="roadmap">
+      <div class="wrap">
+        <p class="kicker">Next</p>
+        <h2>Where it goes after the hackathon.</h2>
+        <div class="roadmap">
+          <div class="rm"><h3>Per-user adapters on the phone</h3><p>Train a small LoRA on the device from that user's own traces, so personal data never leaves at all.</p></div>
+          <div class="rm"><h3>Android and NPU</h3><p>Ship the student as LiteRT-LM for lower memory and multi-token prediction, and run the same file on Android. NPU export via LiteRT or ZETIC.</p></div>
+          <div class="rm"><h3>Trajectory distillation</h3><p>Distill whole multi-step agent runs, evaluated by replaying against mock tools.</p></div>
+          <div class="rm"><h3>Race mode and outcome RL</h3><p>Start student and teacher together on latency-critical paths, and move from SFT to RL once real reward signals exist.</p></div>
+        </div>
+        <div class="vision">
+          <p class="kicker">As a company</p>
+          <h2>One trace stream, compiled to every device.</h2>
+          <p class="sub">The asset is the loop: redacted traces, evals and a router that knows when the student is wrong. Models become a compile target, and every build is checked by the same evals.</p>
+          <div class="roadmap">
+            <div class="rm"><span class="when">Next</span><h3>Every runtime</h3><p>Core ML and the Apple Neural Engine, LiteRT on Android, and NPUs via LiteRT or ZETIC, from the same traces.</p></div>
+            <div class="rm"><span class="when">Next</span><h3>Built-in platform models</h3><p>Apple stopped supporting custom Foundation Models adapters in OS 27, so for built-in models we compile the traces into prompts, tool definitions and output schemas, and train adapters wherever a platform allows them.</p></div>
+            <div class="rm"><span class="when">Then</span><h3>Smaller models per app</h3><p>Pruning, vocabulary trimming and quantization-aware distillation, tuned for each app's download size and battery budget.</p></div>
+            <div class="rm"><span class="when">Later</span><h3>New architectures per use case</h3><p>Search model shapes (depth, width, attention, vocabulary) per use case against the same evals. Research-heavy, and the furthest out.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="f-brand">
+        <img src="/logo-icon.svg" alt="" width="22" height="22" />
+        <span>GradientHarbor</span>
+      </div>
+      <p class="f-note">Built at the <a href="https://www.agihouse.org/events/lenovo-x-agi-house-build-day" target="_blank" rel="noopener">Lenovo × AGI House Personal Agent to Real-World Deployment Build Day</a>, Nov 8, 2026. All demo data is synthetic.</p>
+      <p class="f-links">
+        <a href="/bi/">Looking for GradientHarbor BI? →</a>
+        <a href="mailto:support@gradientharbor.com">support@gradientharbor.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

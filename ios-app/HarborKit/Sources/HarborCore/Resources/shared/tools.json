@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "tools": [
+    {
+      "name": "get_policy",
+      "short": "Member's plan, deductible, out-of-pocket status.",
+      "description": "Look up the signed-in member's insurance policy: plan name, status, effective and renewal dates, deductible and how much of it is met, out-of-pocket maximum and amount spent, and number of dependents.",
+      "write": false,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string", "description": "The member ID from the session context, e.g. BM-10200."}
+        },
+        "required": ["member_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "check_coverage",
+      "short": "Is a service covered; copay, coinsurance, limits.",
+      "description": "Check whether a service is covered under the member's plan and on what terms: copay, coinsurance, whether it counts toward the deductible, referral or prior-authorization requirements, annual visit limits, and out-of-network terms.",
+      "write": false,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "service": {
+            "type": "string",
+            "enum": ["primary_care", "specialist", "dermatology", "dental_cleaning", "dental_filling", "physical_therapy", "mental_health", "chiropractic", "vision_exam", "urgent_care", "mri", "acupuncture", "telehealth", "lab_work"],
+            "description": "Service category. Map the member's words to the closest category (e.g. 'eye exam' -> vision_exam, 'therapy for anxiety' -> mental_health, 'skin check' -> dermatology, 'cardiologist' -> specialist)."
+          }
+        },
+        "required": ["member_id", "service"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_claim_status",
+      "short": "Status of one claim, or the member's recent claims.",
+      "description": "Get the status of a claim: billed and covered amounts, status (submitted, in_review, approved, paid, denied), denial reason, and expected decision date. Pass claim_id for one claim; omit it to list the member's recent claims.",
+      "write": false,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "claim_id": {"type": "string", "description": "Optional claim ID, e.g. CLM-88013."}
+        },
+        "required": ["member_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "file_claim",
+      "short": "Submit a new claim for a past visit.",
+      "description": "File a new claim for a service the member already received. Requires the provider, the service date (YYYY-MM-DD, not in the future), the service category and the billed amount in dollars. Returns the new claim ID.",
+      "write": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "provider_id": {"type": "string", "description": "Provider ID, e.g. PRV-301."},
+          "service_date": {"type": "string", "description": "YYYY-MM-DD"},
+          "service": {"type": "string", "enum": ["primary_care", "specialist", "dermatology", "dental_cleaning", "dental_filling", "physical_therapy", "mental_health", "chiropractic", "vision_exam", "urgent_care", "mri", "acupuncture", "telehealth", "lab_work"]},
+          "amount": {"type": "number", "description": "Billed amount in US dollars."}
+        },
+        "required": ["member_id", "provider_id", "service_date", "service", "amount"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "find_provider",
+      "short": "Search providers by specialty and city.",
+      "description": "Search for providers by specialty, optionally limited to a city and to providers in the member's network. Returns up to 5 matches with provider ID, name, clinic, city, network status, whether they accept new patients, and working days.",
+      "write": false,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "specialty": {"type": "string", "enum": ["dentist", "dermatologist", "physical_therapist", "primary_care", "cardiologist", "optometrist", "chiropractor", "therapist", "orthopedist", "acupuncturist"]},
+          "city": {"type": "string", "description": "Optional city, e.g. San Jose. Use the member's city when they say 'near me'."},
+          "in_network_only": {"type": "boolean", "description": "Default true."}
+        },
+        "required": ["member_id", "specialty"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "book_appointment",
+      "short": "Book a new appointment with a provider.",
+      "description": "Book an appointment for the member with a provider on a date (YYYY-MM-DD) and time (HH:MM, 24h, on the half hour between 09:00 and 16:30). If the time is omitted, the earliest free slot that day is used. Fails with the available times if the slot is taken or the provider doesn't work that day.",
+      "write": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "provider_id": {"type": "string"},
+          "date": {"type": "string", "description": "YYYY-MM-DD"},
+          "time": {"type": "string", "description": "Optional HH:MM, 24h."},
+          "reason": {"type": "string", "description": "Optional short reason for the visit."}
+        },
+        "required": ["member_id", "provider_id", "date"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "reschedule_appointment",
+      "short": "Move an existing appointment to a new date/time.",
+      "description": "Move one of the member's upcoming appointments to a new date (YYYY-MM-DD) and optionally a new time (HH:MM, 24h). If the time is omitted, the original time is kept when free, otherwise the earliest free slot that day. Fails with the available times if the provider doesn't work that day.",
+      "write": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "appointment_id": {"type": "string", "description": "Appointment ID from the session context, e.g. APT-7001."},
+          "new_date": {"type": "string", "description": "YYYY-MM-DD"},
+          "new_time": {"type": "string", "description": "Optional HH:MM, 24h."}
+        },
+        "required": ["member_id", "appointment_id", "new_date"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "escalate_to_human",
+      "short": "Hand off to a human agent (appeals, complaints, medical).",
+      "description": "Hand the conversation to a human support agent. Use for claim appeals, complaints, billing disputes, anything medical (diagnoses, medications, treatment advice), or when the member asks for a person. Returns a ticket ID and expected response time.",
+      "write": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "member_id": {"type": "string"},
+          "topic": {"type": "string", "enum": ["claim_appeal", "complaint", "billing", "medical", "other"]},
+          "summary": {"type": "string", "description": "One or two sentences for the human agent."}
+        },
+        "required": ["member_id", "topic", "summary"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

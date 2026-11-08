@@ -1,0 +1,47 @@
+# Secrets: API keys live in .env files and never go in the repo.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Model weights, checkpoints and training data (tens of GB; rebuild with use-case-evals-poc/train)
+models/
+*.safetensors
+*.gguf
+*.mlpackage
+train/data/
+train/bundle/
+
+# Generated data, eval outputs and local databases
+data/
+runs/output/
+reports/
+*.db
+*.sqlite
+*.sqlite-*
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / web
+node_modules/
+dist/
+.wrangler/
+
+# Xcode / Swift
+build/
+.build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+ios-app/HarborKit/parity/
+
+# Local tooling
+.DS_Store
+.claude/settings.local.json
+*.tar.gz
+*.log
