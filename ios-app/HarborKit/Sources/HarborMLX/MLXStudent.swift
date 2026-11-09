@@ -7,9 +7,9 @@ import MLXLLM
 import MLXLMCommon
 import Tokenizers
 
-/// The fine-tuned Gemma 4 student running in-process with MLX: the same fused 4-bit weights the evals used.
+/// The fine-tuned student (Gemma 4 E4B or Liquid LFM3-1.7B) running in-process with MLX: the same fused weights the evals used.
 ///
-/// Mirrors harbor_env/models.py `MLXBackend.step`: the Gemma chat template rendered by hand, greedy
+/// Mirrors harbor_env/models.py `MLXBackend.step` / `VLMBackend.step`: the chat template rendered by hand, greedy
 /// decoding, logprobs of non-whitespace tokens, stop at an end-of-turn token or once the JSON action closes.
 public final class MLXStudent: StudentModel, @unchecked Sendable {
     public let name: String
@@ -17,6 +17,8 @@ public final class MLXStudent: StudentModel, @unchecked Sendable {
     private let context: ModelContext
     private let stopIds: Set<Int>
     private let maxTokens: Int
+    /// Chat template, from config.json `model_type`.
+    public let template: Prompts.Template
     private let lock = NSLock()
     /// Diagnostics sink (memory at each phase); the app writes it to Documents/bayside-diag.log.
     public var log: (@Sendable (String) -> Void)?
@@ -24,34 +26,47 @@ public final class MLXStudent: StudentModel, @unchecked Sendable {
     /// ~1 MB per position, so small chunks keep the prefill spike well below the phone's limit.
     public var prefillStepSize = 64
 
-    private init(name: String, directory: URL, context: ModelContext, stopIds: Set<Int>, maxTokens: Int) {
+    private init(name: String, directory: URL, context: ModelContext, stopIds: Set<Int>, maxTokens: Int, template: Prompts.Template) {
         self.name = name; self.directory = directory; self.context = context; self.stopIds = stopIds; self.maxTokens = maxTokens
+        self.template = template
+    }
+
+    /// config.json `model_type` of a model folder ("gemma4", "lfm3", …).
+    public static func modelType(_ directory: URL) -> String {
+        guard let data = try? Data(contentsOf: directory.appendingPathComponent("config.json")),
+              let cfg = try? JSON.parse(data) else { return "" }
+        return cfg["model_type"]?.string ?? ""
     }
 
     /// Load a fused MLX model folder (config.json, *.safetensors, tokenizer.json).
     public static func load(directory: URL, name: String? = nil, maxTokens: Int = 320,
                             progress: (@Sendable (Double) -> Void)? = nil) async throws -> MLXStudent {
-        // The model is ~5.9 GB in memory and iOS gives the app ~6.4 GB: keep MLX's buffer cache tiny.
-        MLX.GPU.set(cacheLimit: 32 * 1024 * 1024)  // the phone has ~0.4 GB headroom after loading
+        let template = Prompts.Template.forModel(type: modelType(directory))
+        if template == .lfm3 { await LFM3.register() }  // not in mlx-swift-lm yet
+        // Gemma 4 E4B is ~5.9 GB in memory and iOS gives the app ~6.4 GB: keep MLX's buffer cache tiny
+        // (~0.4 GB headroom after loading). LFM3-1.7B is ~1.4 GB, so it can afford a normal cache.
+        MLX.GPU.set(cacheLimit: (template == .lfm3 ? 256 : 32) * 1024 * 1024)
         progress?(0.05)
         MLXStudent.staticLog?("load start · \(MLXStudent.memoryLine())")
         let context = try await LLMModelFactory.shared.load(from: directory, using: #huggingFaceTokenizerLoader())
         progress?(1.0)
         MLXStudent.staticLog?("load done · \(MLXStudent.memoryLine())")
-        var stops: Set<Int> = [1, 106, 50]  // generation_config.json eos_token_id (<eos>, <turn|>, …)
+        var stops: Set<Int> = template == .lfm3 ? [124900] : [1, 106, 50]  // generation_config.json eos_token_id
         if let data = try? Data(contentsOf: directory.appendingPathComponent("generation_config.json")),
            let cfg = try? JSON.parse(data) {
             if let arr = cfg["eos_token_id"]?.array { stops = Set(arr.compactMap(\.int)) }
             else if let one = cfg["eos_token_id"]?.int { stops = [one] }
         }
-        return MLXStudent(name: name ?? directory.lastPathComponent, directory: directory, context: context, stopIds: stops, maxTokens: maxTokens)
+        return MLXStudent(name: name ?? directory.lastPathComponent, directory: directory, context: context, stopIds: stops, maxTokens: maxTokens, template: template)
     }
 
     public func promptTokens(_ messages: [HarborCore.Message]) -> [Int] {
-        context.tokenizer.encode(text: Prompts.render(system: Prompts.studentSystem, messages: messages), addSpecialTokens: false)
+        context.tokenizer.encode(text: Prompts.render(system: Prompts.studentSystem, messages: messages, template: template), addSpecialTokens: false)
     }
 
     public func step(_ messages: [HarborCore.Message]) async throws -> StudentOutput {
+        // Prefill is GPU work too: don't start it while the app is in the background (or the phone locked).
+        while MLXStudent.isBackground { try await Task.sleep(for: .milliseconds(200)) }
         lock.lock()
         defer { lock.unlock() }
         let tokens = promptTokens(messages)
@@ -67,7 +82,8 @@ public final class MLXStudent: StudentModel, @unchecked Sendable {
         var text = ""
         while let t = iterator.next() {
             // iOS kills apps that submit GPU work from the background: wait until we're visible again.
-            while MLXStudent.isBackground { try await Task.sleep(for: .milliseconds(200)) }
+            // (A thread sleep, not an await: the NSLock must be released on the thread that took it.)
+            while MLXStudent.isBackground { Thread.sleep(forTimeInterval: 0.2) }
             if stopIds.contains(t) { break }
             out.append(t)
             if out.count == 1 { log?(String(format: "first token %.2f s · ", Date().timeIntervalSince(t0)) + Self.memoryLine()) }

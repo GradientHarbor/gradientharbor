@@ -100,6 +100,50 @@ On an iPhone, the whole stack runs in the app; Settings → **Assistant runs on 
   Regenerate the fixtures with `uv run python runs/export_parity.py` in `use-case-evals-poc`.
 - **Deploy:** run `./deploy-device.sh` with the iPhone unlocked and connected. It builds a Release app, installs it, and copies the 5.5 GB model into the app's `Documents/Models/ft-e4b-r2`. The first copy takes a few minutes over USB. `SKIP_MODEL=1` reinstalls the app only. The app has the increased-memory entitlement, which the 5.5 GB model needs.
 
+### Measured on the iPhone Air (Gemma 4 E4B, round 2, Release build, Nov 8)
+
+| | |
+|---|---|
+| Memory for the app at launch (increased-memory entitlement) | 6.42 GB |
+| Model load | 2–3 s; MLX holds 5.85 GB, leaving 0.39–0.40 GB |
+| Prefill, 850–1,000 prompt tokens | 2.1–3.0 s |
+| Decode | ~12.5 tokens/s |
+| One agent step | 4.5–7.9 s (a typical request is 2 steps, 10–13 s) |
+| Lowest free memory during a step | 0.35 GB |
+
+"Move my eye exam to Friday" → confirmation card → moved to Fri, Nov 13, tagged On device (12.9 s end to end).
+
+**Why it used to crash:** the prefill spike. With 0.4 GB of headroom, a 512-token prefill chunk plus a 256 MB MLX buffer cache went past the limit and iOS killed the app with no report. Now `MLXStudent` prefills 64 tokens at a time with a 32 MB cache (the low point went from 0.12 to 0.35 GB free). Decoding also pauses while the app is in the background, because iOS terminates apps that submit GPU work from the background.
+
+**Diagnostics:** every launch, scene change and model step (prompt tokens, timings, free memory) is appended to `Documents/bayside-diag.log`:
+
+```bash
+xcrun devicectl device copy from --device <UDID> --domain-type appDataContainer --domain-identifier com.gradientharbor.bayside --source Documents/bayside-diag.log --destination bayside-diag.log
+```
+
+## Bayside LFM3 (the Liquid LFM3-1.7B copy)
+
+A second app target, **BaysideLFM3**, installs next to the Gemma app: display name "Bayside LFM3", bundle id `com.gradientharbor.bayside.lfm3`, URL scheme `bayside-lfm3://` (same hosts as `bayside://`), its own `Documents/Models`, and device id `iphone-lfm3` in the backend ledger. It builds from the same sources. The model folder's `config.json` `model_type` picks the architecture and chat template, so the Gemma app is unchanged.
+
+- **The model:** `models/ft-lfm3-r2`, the round-2 LoRA merged into LFM3-1.7B at 6-bit (1.34 GB). It doesn't need the 0.4 GB headroom tricks; the cache limit is 256 MB.
+- **The port:** mlx-swift-lm 3.32 has LFM2 but not LFM3, so `HarborMLX/LFM3.swift` ports `mlx_vlm/models/lfm3` (mlx-vlm 0.7.12, which the Mac evals ran). It covers short convolutions, full and sliding-window (256) attention with sigmoid output gates, partial rotary embeddings, and sandwich norms. `MLXStudent` registers it as `lfm3` before loading. The chat template is ChatML with an empty `<think></think>` block on assistant turns (`Prompts.Template.lfm3`).
+- **Parity on the Mac (Nov 8):**
+  - 84 of 84 rendered prompts and token ids are identical to Python (`ft-lfm3-r2-eval` export).
+  - 16 of 16 greedy outputs are byte-identical to mlx-vlm on the same merged model.
+
+  ```bash
+  cd HarborKit && PARITY_PROMPTS=prompts-lfm3.jsonl .build/xc/Build/Products/Debug/harbor-parity generate parity ../../use-case-evals-poc/models/ft-lfm3-r2 16
+  ```
+
+  `parity/prompts-lfm3.jsonl` holds the merged model's Python outputs (`raw`), with the adapter run's outputs kept as `raw_adapter`. The parity folder is gitignored. Regenerate it in `use-case-evals-poc` with `uv run python runs/export_parity.py --run ft-lfm3-r2-eval --model models/ft-lfm3-r2 --out prompts-lfm3.jsonl`, then `uv run --with "mlx-vlm>=0.7.11" python runs/lfm3_parity_ref.py 16`.
+- **Deploy:**
+
+  ```bash
+  EDITION=lfm3 ./deploy-device.sh
+  ```
+
+  This copies about 1.4 GB. In the Simulator, the copy uses the Mac runtime on port 8100, which serves LFM3 by default.
+
 ## Not done yet (the real-device path)
 
 - **Eval mode on the phone:** run the held-out scenarios on the device and post them as run `phone-ft-e4b`.

@@ -10,13 +10,25 @@
 		007EF2D06457C575D65E6F2B /* DeviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9123521FBDB3C881B44EE81 /* DeviceClient.swift */; };
 		045C96818E5A974A26D01AAE /* LocalRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F69D720104AA1A8A8F993 /* LocalRuntime.swift */; };
 		0641734B8319CFC7AC5373E1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0265B57CEDF327BA5B99942C /* Models.swift */; };
+		0D8203128F31A1947DD447E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B2413D03468912EAE58773 /* HomeView.swift */; };
+		2A1967FC690AD17AAB1B8F86 /* BaysideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2DA6867C2D6C503BAC38D3 /* BaysideApp.swift */; };
 		474B6698057E9B9FD87ADBBC /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C12D14FAC451359E42BD3AB /* Components.swift */; };
+		4BDBB4C8FF118A1F2199AA85 /* DeviceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9123521FBDB3C881B44EE81 /* DeviceClient.swift */; };
+		5B851BBAB4A498167FA6CACA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EDA1A37F374D39A1A374A9 /* AppStore.swift */; };
+		60D504823466651C8EB18388 /* LedgerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF59E0C1D9419AFAEFA4C1 /* LedgerSettingsView.swift */; };
+		628698573A8B4D84ED0C0DA4 /* HarborCore in Frameworks */ = {isa = PBXBuildFile; productRef = FDCDED4A3537D12466809733 /* HarborCore */; };
 		63F5B87D77CA274F86C99D75 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E4445A55A966D58A7236E /* ListsView.swift */; };
+		70EAFCDC2715EF9A10C538D6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C12D14FAC451359E42BD3AB /* Components.swift */; };
 		86D421956071AD38B3342273 /* HarborCore in Frameworks */ = {isa = PBXBuildFile; productRef = 09D13F12757A731221A83AA3 /* HarborCore */; };
+		8DAB15F95263BAE10C517270 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B357331AB92AC38AF09D6F98 /* ChatView.swift */; };
+		9058E2634FE6349831998D6E /* HarborMLX in Frameworks */ = {isa = PBXBuildFile; productRef = 824038A6CB961AFEEE1AA395 /* HarborMLX */; };
 		9732013173B4FA737DDC3CF0 /* BaysideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2DA6867C2D6C503BAC38D3 /* BaysideApp.swift */; };
 		A2B56FD158897DDC7B66BCBA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B2413D03468912EAE58773 /* HomeView.swift */; };
 		B5A11CF73F8824BFBAEA8469 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B357331AB92AC38AF09D6F98 /* ChatView.swift */; };
 		B782F9D9733F76C79BA7F389 /* LedgerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF59E0C1D9419AFAEFA4C1 /* LedgerSettingsView.swift */; };
+		B79458B9B45EC777CD30A588 /* LocalRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F69D720104AA1A8A8F993 /* LocalRuntime.swift */; };
+		C1A414244302DF537489CC81 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0265B57CEDF327BA5B99942C /* Models.swift */; };
+		E4109B5CDAD08D27ACE50613 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E4445A55A966D58A7236E /* ListsView.swift */; };
 		F26DE0E542E8F2695D7D7FE9 /* HarborMLX in Frameworks */ = {isa = PBXBuildFile; productRef = 5FAEFEE95662D5813B743A2B /* HarborMLX */; };
 		FD6158ABE3B1D8665E490BFE /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EDA1A37F374D39A1A374A9 /* AppStore.swift */; };
 /* End PBXBuildFile section */
@@ -34,11 +46,21 @@
 		B9123521FBDB3C881B44EE81 /* DeviceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceClient.swift; sourceTree = "<group>"; };
 		C0EDA1A37F374D39A1A374A9 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		D1B2413D03468912EAE58773 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E0140149A55E49DDFC76A5C0 /* BaysideLFM3.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BaysideLFM3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1F69D720104AA1A8A8F993 /* LocalRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRuntime.swift; sourceTree = "<group>"; };
 		FB2DA6867C2D6C503BAC38D3 /* BaysideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaysideApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		66775028FD4C9A171B4D2725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				628698573A8B4D84ED0C0DA4 /* HarborCore in Frameworks */,
+				9058E2634FE6349831998D6E /* HarborMLX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7590D595ECFD8828A2C5DBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				090BDB9942DC1B9A1782E7A2 /* Bayside.app */,
+				E0140149A55E49DDFC76A5C0 /* BaysideLFM3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +121,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1237E4873B4E59B2C1649512 /* BaysideLFM3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99FBA4B8AE4FC2F90EAA4A15 /* Build configuration list for PBXNativeTarget "BaysideLFM3" */;
+			buildPhases = (
+				80A9EAC7D8DB3E09B4A2252C /* Sources */,
+				66775028FD4C9A171B4D2725 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BaysideLFM3;
+			packageProductDependencies = (
+				FDCDED4A3537D12466809733 /* HarborCore */,
+				824038A6CB961AFEEE1AA395 /* HarborMLX */,
+			);
+			productName = BaysideLFM3;
+			productReference = E0140149A55E49DDFC76A5C0 /* BaysideLFM3.app */;
+			productType = "com.apple.product-type.application";
+		};
 		84AB77A67DE08C6B4CFA9E30 /* Bayside */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FBDE4E63F9E909395B117DF /* Build configuration list for PBXNativeTarget "Bayside" */;
@@ -127,6 +170,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					1237E4873B4E59B2C1649512 = {
+						DevelopmentTeam = QNV5826RKW;
+						ProvisioningStyle = Automatic;
+					};
 					84AB77A67DE08C6B4CFA9E30 = {
 						DevelopmentTeam = QNV5826RKW;
 						ProvisioningStyle = Automatic;
@@ -151,6 +198,7 @@
 			projectRoot = "";
 			targets = (
 				84AB77A67DE08C6B4CFA9E30 /* Bayside */,
+				1237E4873B4E59B2C1649512 /* BaysideLFM3 */,
 			);
 		};
 /* End PBXProject section */
@@ -170,6 +218,23 @@
 				63F5B87D77CA274F86C99D75 /* ListsView.swift in Sources */,
 				045C96818E5A974A26D01AAE /* LocalRuntime.swift in Sources */,
 				0641734B8319CFC7AC5373E1 /* Models.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A9EAC7D8DB3E09B4A2252C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B851BBAB4A498167FA6CACA /* AppStore.swift in Sources */,
+				2A1967FC690AD17AAB1B8F86 /* BaysideApp.swift in Sources */,
+				8DAB15F95263BAE10C517270 /* ChatView.swift in Sources */,
+				70EAFCDC2715EF9A10C538D6 /* Components.swift in Sources */,
+				4BDBB4C8FF118A1F2199AA85 /* DeviceClient.swift in Sources */,
+				0D8203128F31A1947DD447E3 /* HomeView.swift in Sources */,
+				60D504823466651C8EB18388 /* LedgerSettingsView.swift in Sources */,
+				E4109B5CDAD08D27ACE50613 /* ListsView.swift in Sources */,
+				B79458B9B45EC777CD30A588 /* LocalRuntime.swift in Sources */,
+				C1A414244302DF537489CC81 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +325,48 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
+		};
+		50BA7C74ABA2449B5F13CF0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BaysideLFM3/BaysideLFM3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QNV5826RKW;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BaysideLFM3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gradientharbor.bayside.lfm3;
+				PRODUCT_NAME = BaysideLFM3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		91989204A0ACAE61F7ED7DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BaysideLFM3/BaysideLFM3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QNV5826RKW;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BaysideLFM3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gradientharbor.bayside.lfm3;
+				PRODUCT_NAME = BaysideLFM3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
 		};
 		9BDC3761BAAC7CB72B24E231 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -360,6 +467,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		99FBA4B8AE4FC2F90EAA4A15 /* Build configuration list for PBXNativeTarget "BaysideLFM3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50BA7C74ABA2449B5F13CF0F /* Debug */,
+				91989204A0ACAE61F7ED7DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -377,6 +493,14 @@
 		5FAEFEE95662D5813B743A2B /* HarborMLX */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HarborMLX;
+		};
+		824038A6CB961AFEEE1AA395 /* HarborMLX */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HarborMLX;
+		};
+		FDCDED4A3537D12466809733 /* HarborCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HarborCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

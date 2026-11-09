@@ -24,8 +24,8 @@ enum RuntimeMode: String, CaseIterable, Identifiable {
     var label: String { self == .device ? "This iPhone (MLX)" : "Mac runtime (Wi-Fi)" }
 }
 
-/// The on-device stack: HarborKit's agent (tools, redactor, router, ledger) with the fine-tuned Gemma 4
-/// student running in-process via MLX. Escalations go to the backend's teacher proxy.
+/// The on-device stack: HarborKit's agent (tools, redactor, router, ledger) with the fine-tuned student
+/// (Gemma 4 E4B, or LFM3-1.7B in the Bayside LFM3 copy) running in-process via MLX. Escalations go to the backend's teacher proxy.
 final class LocalRuntime: Runtime, @unchecked Sendable {
     static let shared = LocalRuntime()
 
@@ -40,7 +40,8 @@ final class LocalRuntime: Runtime, @unchecked Sendable {
     private var pending: CheckedContinuation<Bool, Never>?
     var backendURL = URL(string: "http://Aydars-MacBook-Pro.local:8000")!
 
-    static let deviceId = "iphone-local"
+    /// Separate ids per edition so the backend ledger tells the Gemma app and the LFM3 copy apart.
+    static let deviceId = Bundle.main.bundleIdentifier?.hasSuffix(".lfm3") == true ? "iphone-lfm3" : "iphone-local"
 
     /// Model folders are side-loaded into Documents/Models/<name>/ (Finder file sharing or `devicectl device copy to`).
     static func findModel() -> URL? {
@@ -54,7 +55,10 @@ final class LocalRuntime: Runtime, @unchecked Sendable {
         return nil
     }
 
-    static var modelsFolderHint: String { "Files → On My iPhone → Bayside → Models/<model folder>" }
+    static var modelsFolderHint: String {
+        let app = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "Bayside"
+        return "Files → On My iPhone → \(app) → Models/<model folder>"
+    }
 
     func load(memberId: String) async {
         lock.lock()
@@ -200,12 +204,17 @@ final class LocalRuntime: Runtime, @unchecked Sendable {
         return .object(JObject([
             ("ready", .bool(phase == .ready)), ("error", phase == .ready ? .null : error),
             ("model", .object(JObject([("name", .string(name)), ("round", round.map { .int($0) } ?? .null), ("size_bytes", .double(size)),
-                                       ("version", .string(version)), ("base", .string("Gemma 4 E4B, MLX 4-bit"))]))),
+                                       ("version", .string(version)), ("base", .string(Self.baseLabel(modelDir ?? Self.findModel())))]))),
             ("settings", .object(JObject([("offline", .bool(offline)), ("shadow_rate", .double(shadow)), ("sync", .bool(sync)),
                                           ("backend", .string(backendURL.absoluteString)), ("device_id", .string(Self.deviceId))]))),
             ("counters", .object(counters)), ("queued", .int(queued)),
             ("runtime", .string("On this iPhone (MLX) · \(Self.memoryLine)")),
         ]))
+    }
+
+    static func baseLabel(_ dir: URL?) -> String {
+        guard let dir else { return "-" }
+        return MLXStudent.modelType(dir).hasPrefix("lfm") ? "Liquid LFM3-1.7B, MLX 6-bit" : "Gemma 4 E4B, MLX 4-bit"
     }
 
     static var memoryLine: String {

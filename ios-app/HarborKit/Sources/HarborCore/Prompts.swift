@@ -1,6 +1,6 @@
 import Foundation
 
-/// harbor_env/prompts.py, plus the Gemma 4 chat template rendered by hand (no Jinja engine on the
+/// harbor_env/prompts.py, plus the students' chat templates (Gemma 4, LFM3) rendered by hand (no Jinja engine on the
 /// phone: a template mismatch would silently corrupt the fine-tuned student's input).
 public enum Prompts {
     public static let core = Shared.text("prompts/system_core.txt").trimmingCharacters(in: .whitespacesAndNewlines)
@@ -26,13 +26,32 @@ public enum Prompts {
         "<tool_result name=\"\(name)\">\(JSON.object(result).compact)</tool_result>"
     }
 
-    /// Gemma 4 chat template with `add_generation_prompt=True, enable_thinking=False`.
-    public static func render(system: String, messages: [Message]) -> String {
-        var s = "<bos><|turn>system\n\(system)<turn|>\n"
-        for m in messages {
-            s += "<|turn>\(m.role == .assistant ? "model" : "user")\n\(m.content)<turn|>\n"
+    /// The chat templates the student models use, rendered by hand.
+    public enum Template: String, Sendable {
+        case gemma4, lfm3
+
+        /// From a model folder's config.json `model_type`.
+        public static func forModel(type: String) -> Template { type.hasPrefix("lfm") ? .lfm3 : .gemma4 }
+    }
+
+    /// The model's chat template with `add_generation_prompt=True, enable_thinking=False`.
+    public static func render(system: String, messages: [Message], template: Template = .gemma4) -> String {
+        switch template {
+        case .gemma4:
+            var s = "<bos><|turn>system\n\(system)<turn|>\n"
+            for m in messages {
+                s += "<|turn>\(m.role == .assistant ? "model" : "user")\n\(m.content)<turn|>\n"
+            }
+            return s + "<|turn>model\n"
+        case .lfm3:
+            // Liquid LFM3 (ChatML with an empty think block on every assistant turn).
+            var s = "<|startoftext|><|im_start|>system\n\(system)<|im_end|>\n"
+            for m in messages {
+                s += m.role == .assistant ? "<|im_start|>assistant\n<think></think>\(m.content)<|im_end|>\n"
+                                          : "<|im_start|>user\n\(m.content)<|im_end|>\n"
+            }
+            return s + "<|im_start|>assistant\n<think></think>"
         }
-        return s + "<|turn>model\n"
     }
 }
 

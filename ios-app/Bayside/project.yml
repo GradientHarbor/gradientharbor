@@ -55,3 +55,47 @@ targets:
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: QNV5826RKW
         ENABLE_PREVIEWS: YES
+
+  # A second copy of the app for the Liquid LFM3-1.7B student, installed side by side with the Gemma app
+  # (own bundle id, display name, URL scheme and Documents/Models). Same sources: the model folder's
+  # config.json picks the architecture and chat template.
+  BaysideLFM3:
+    type: application
+    platform: iOS
+    sources:
+      - path: Bayside
+        excludes: [Info.plist, Bayside.entitlements]
+    dependencies:
+      - package: HarborKit
+        product: HarborCore
+      - package: HarborKit
+        product: HarborMLX
+    entitlements:
+      path: BaysideLFM3/BaysideLFM3.entitlements
+      properties:
+        com.apple.developer.kernel.increased-memory-limit: true
+    info:
+      path: BaysideLFM3/Info.plist
+      properties:
+        CFBundleDisplayName: Bayside LFM3
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        CFBundleURLTypes:
+          - CFBundleURLName: com.gradientharbor.bayside.lfm3
+            CFBundleURLSchemes: [bayside-lfm3]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+          NSAllowsArbitraryLoads: true
+        NSLocalNetworkUsageDescription: Bayside connects to the GradientHarbor runtime and backend on your local network.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gradientharbor.bayside.lfm3
+        PRODUCT_NAME: BaysideLFM3
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: QNV5826RKW
+        ENABLE_PREVIEWS: YES

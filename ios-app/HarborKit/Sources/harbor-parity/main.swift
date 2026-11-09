@@ -87,6 +87,9 @@ func replay(_ file: URL, scenarios: [String: JSON]) {
     print("\(file.lastPathComponent): \(episodes) episodes, \(strings) model-visible strings, \(gates) router gates compared")
 }
 
+/// PARITY_PROMPTS=prompts-lfm3.jsonl picks another export (default prompts.jsonl, the Gemma run).
+let promptsFile = ProcessInfo.processInfo.environment["PARITY_PROMPTS"] ?? "prompts.jsonl"
+
 func messages(_ row: JSON) -> [HarborCore.Message] {
     row["messages"]!.array!.map { m in
         HarborCore.Message(role: m["role"]!.string! == "assistant" ? .assistant : .user, content: m["content"]!.string!)
@@ -111,10 +114,12 @@ case "core":
 case "prompts":
     let modelDir = URL(fileURLWithPath: args[3])
     let tok = try await AutoTokenizer.from(modelFolder: modelDir)
+    let template = Prompts.Template.forModel(type: MLXStudent.modelType(modelDir))
+    print("template: \(template.rawValue) · \(promptsFile)")
     var n = 0
-    for row in lines(dir.appendingPathComponent("prompts.jsonl")) {
+    for row in lines(dir.appendingPathComponent(promptsFile)) {
         n += 1
-        let rendered = Prompts.render(system: Prompts.studentSystem, messages: messages(row))
+        let rendered = Prompts.render(system: Prompts.studentSystem, messages: messages(row), template: template)
         check(rendered == row["prompt"]!.string!, "\(row["scenario_id"]!.string!) step \(row["step"]!.pyStr): rendered prompt differs")
         let ids = tok.encode(text: rendered, addSpecialTokens: false)
         let py = row["ids"]!.array!.compactMap(\.int)
@@ -133,7 +138,7 @@ case "generate":
     print(String(format: "model loaded in %.1f s", Date().timeIntervalSince(t0)))
     var n = 0, same = 0, sameAction = 0
     var lat: [Double] = []
-    for row in lines(dir.appendingPathComponent("prompts.jsonl")).prefix(limit) {
+    for row in lines(dir.appendingPathComponent(promptsFile)).prefix(limit) {
         n += 1
         let out = try await student.step(messages(row))
         lat.append(out.latency)
