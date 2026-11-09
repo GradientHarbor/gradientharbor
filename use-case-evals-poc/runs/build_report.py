@@ -31,6 +31,9 @@ RUNS = [  # (run dir, label, short label, kind)
     ("ft-lfm3full-r2-eval", "LFM3-1.7B full fine-tune", "LFM3 full", "local"),
     ("hybrid-lfm3-r2-eval", "LFM3-1.7B LoRA + router", "LFM3 hybrid", "hybrid"),
     ("hybrid-lfm3full-r2-eval", "LFM3-1.7B full fine-tune + router", "LFM3 full hybrid", "hybrid"),
+    # The deployed student: LoRA merged into the weights at 6-bit (train/fuse_vlm.py --bits 6), 1.36 GB.
+    ("ft-lfm3-r2q6-eval", "LFM3-1.7B merged 6-bit (main)", "LFM3 main", "local"),
+    ("hybrid-lfm3-r2q6-eval", "LFM3-1.7B merged 6-bit + router (main)", "LFM3 main hybrid", "hybrid"),
 ]
 
 

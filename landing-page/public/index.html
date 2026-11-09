@@ -324,14 +324,14 @@ resp.harbor.route   <span class="c"># "student" | "teacher", plus the gate that 
       <div class="wrap">
         <p class="kicker">Results</p>
         <h2>Measured, not promised.</h2>
-        <p class="sub">From the overnight run on November 8: the same 152 synthetic member requests for every setup, scored against ground truth. Phone latency and battery come from the app's eval mode next.</p>
+        <p class="sub">From the overnight run on November 8: the same 152 synthetic member requests for every setup, scored against ground truth. Our main student is Liquid AI's LFM3-1.7B (1.4 GB); Gemma 4 E4B (5.5 GB) is the larger option and the model behind the flywheel rounds. Phone latency and battery come from the app's eval mode next.</p>
         <div class="metrics">
-          <div class="metric"><span class="m-v" data-metric="success">94.1%</span><span class="m-l">Task success, fine-tuned Gemma 4 E4B + router (Sonnet alone: 97.4%, untrained E4B: 64.5%)</span></div>
-          <div class="metric"><span class="m-v" data-metric="escalation">16.4%</span><span class="m-l">Share of requests sent to the cloud in round 2 (round 0: 100%, round 1: 20.4%)</span></div>
-          <div class="metric"><span class="m-v" data-metric="local">95.3%</span><span class="m-l">Task success on requests the router kept on the device</span></div>
+          <div class="metric"><span class="m-v" data-metric="success">91.4%</span><span class="m-l">Task success, our 1.4 GB Liquid LFM3-1.7B student + router (Gemma 4 E4B: 94.1%, Sonnet alone: 97.4%)</span></div>
+          <div class="metric"><span class="m-v" data-metric="escalation">11.8%</span><span class="m-l">Share of requests sent to the cloud with LFM3 (Gemma round 2: 16.4%, round 0: 100%)</span></div>
+          <div class="metric"><span class="m-v" data-metric="local">91.8%</span><span class="m-l">Task success on requests the router kept on the device (LFM3)</span></div>
           <div class="metric"><span class="m-v m-target" data-metric="pii">0</span><span class="m-l">Raw personal fields sent to the cloud (1,768 calls re-scanned)</span></div>
-          <div class="metric"><span class="m-v" data-metric="offline">86.8%</span><span class="m-l">Task success with no network (fine-tuned model alone)</span></div>
-          <div class="metric"><span class="m-v" data-metric="prompt">−58%</span><span class="m-l">Prompt tokens per step after fine-tuning (2,293 → ~970)</span></div>
+          <div class="metric"><span class="m-v" data-metric="offline">86.8%</span><span class="m-l">Task success with no network (fine-tuned LFM3 alone; Gemma: also 86.8%)</span></div>
+          <div class="metric"><span class="m-v" data-metric="prompt">−58%</span><span class="m-l">Prompt tokens per step after fine-tuning (about 2,200 → 900, both students)</span></div>
         </div>
 
         <h3 class="r-h">Every configuration, same 152 requests</h3>
@@ -340,16 +340,19 @@ resp.harbor.route   <span class="c"># "student" | "teacher", plus the gate that 
             <thead><tr><th scope="col">Configuration</th><th scope="col">Task success</th><th scope="col">Held-out</th><th scope="col">Novel</th><th scope="col">Sent to cloud</th><th scope="col">p50 / step</th><th scope="col">Cloud cost</th></tr></thead>
             <tbody>
               <tr><th scope="row">Sonnet 5.5 (cloud only)</th><td>97.4%</td><td>100%</td><td>100%</td><td>100%</td><td>1.31 s</td><td>$1.91</td></tr>
+              <tr><th scope="row">Liquid LFM3-1.7B, no fine-tuning</th><td>37.5%</td><td>50.0%</td><td>24.1%</td><td>0%</td><td>—</td><td>$0</td></tr>
+              <tr><th scope="row">LFM3 fine-tuned (LoRA merged, 1.4 GB)</th><td>86.8%</td><td>98.0%</td><td>58.6%</td><td>0%</td><td>1.18 s</td><td>$0</td></tr>
+              <tr class="r-best"><th scope="row">LFM3 fine-tuned + router (main student)</th><td>91.4%</td><td>98.0%</td><td>75.9%</td><td>11.8%</td><td>0.94 s</td><td>$0.21</td></tr>
               <tr><th scope="row">Gemma 4 E4B, no fine-tuning</th><td>64.5%</td><td>73.5%</td><td>51.7%</td><td>0%</td><td>2.96 s</td><td>$0</td></tr>
               <tr><th scope="row">E4B fine-tuned, round 2</th><td>86.8%</td><td>94.9%</td><td>75.9%</td><td>0%</td><td>2.35 s</td><td>$0</td></tr>
               <tr><th scope="row">E4B fine-tuned + router, round 1</th><td>86.8%</td><td>96.9%</td><td>58.6%</td><td>20.4%</td><td>2.38 s</td><td>$0.73</td></tr>
-              <tr class="r-best"><th scope="row">E4B fine-tuned + router, round 2</th><td>94.1%</td><td>98.0%</td><td>89.7%</td><td>16.4%</td><td>2.35 s</td><td>$0.71</td></tr>
+              <tr><th scope="row">E4B fine-tuned + router, round 2</th><td>94.1%</td><td>98.0%</td><td>89.7%</td><td>16.4%</td><td>2.35 s</td><td>$0.71</td></tr>
             </tbody>
           </table>
         </div>
         <p class="r-note">On-device latency is measured on an M5 Mac with MLX, standing in for the phone. Every run sent 0 raw personal fields to the cloud.</p>
 
-        <h3 class="r-h">The flywheel, round by round</h3>
+        <h3 class="r-h">The flywheel, round by round (Gemma 4 E4B)</h3>
         <ol class="rounds">
           <li><span class="rd">Round 0</span><span class="rv">100%</span><span class="rl">sent to the cloud. Sonnet serves everything, 97.4% success</span></li>
           <li><span class="rd">Round 1</span><span class="rv">20.4%</span><span class="rl">sent to the cloud after training on 250 Sonnet traces, 86.8% success</span></li>

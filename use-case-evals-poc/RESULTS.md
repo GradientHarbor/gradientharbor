@@ -26,9 +26,13 @@ Same 152 scenarios, same round-2 training data (1,010 examples) and the same sco
 | LFM3-1.7B full fine-tune | 78.9% | 96.9% | 34.5% | 63.8% | 0% | 78.9% | 0.81 s | 905 | $0 |
 | **LFM3-1.7B LoRA + router** | **91.4%** | **98.0%** | 75.9% | **82.2%** | **10.5%** | 91.9% | 1.49 s | — | **$0.18** |
 | LFM3-1.7B full fine-tune + router | 86.2% | 99.0% | 48.3% | 75.0% | 13.2% | 85.6% | 0.74 s | — | $0.24 |
+| LFM3-1.7B LoRA merged at 6-bit (deployed) | 86.8% | 98.0% | 58.6% | 78.3% | 0% | 86.8% | 1.18 s | 907 | $0 |
+| **LFM3-1.7B LoRA merged at 6-bit + router (main student)** | **91.4%** | **98.0%** | 75.9% | **82.2%** | **11.8%** | 91.8% | **0.94 s** | — | **$0.21** |
 | *Gemma 4 E4B + router, round 2 (for comparison)* | *94.1%* | *98.0%* | *89.7%* | *81.6%* | *16.4%* | *95.3%* | *2.35 s* | *1,240* | *$0.71* |
 
-\* These runs shared the GPU with a training job. Measured again with the GPU free (15 held-out requests), LFM3 LoRA runs at **1.34 s** p50 per step with the adapter applied on the fly. The full-fine-tune rows had the GPU to themselves (0.74–0.81 s), so merging the adapter into the weights should bring LoRA to about 0.8 s. Not measured yet.
+\* These runs shared the GPU with a training job. Measured again with the GPU free (15 held-out requests), LFM3 LoRA runs at **1.34 s** p50 per step with the adapter applied on the fly. The full-fine-tune rows had the GPU to themselves (0.74–0.81 s).
+
+**The deployed student is the LoRA merged into the weights at 6-bit** (`train/fuse_vlm.py --bits 6` → `models/ft-lfm3-r2`, 1.36 GB). Merging at the base's 4 bits is faster (0.78 s/step) but rounds away much of the small adapter delta: 10/15 vs 15/15 on a held-out check. 8-bit kept accuracy (15/15) but was barely faster (1.21 s, 1.72 GB); 6-bit keeps it (15/15, then the full runs above) at 1.04 s on that check and 1.36 GB. On the full 152 requests the merged model scores exactly what the unmerged adapter did (86.8% alone, 91.4% with the router), at 0.94 s per step. It is the main student since Nov 8 (Mac device runtime and the Bayside LFM3 iOS build).
 
 - **Fine-tuning fixes the format.** 77 of the untrained model's 95 failures were prose answers instead of the JSON action. After LoRA there are none, and the model alone matches fine-tuned Gemma E4B (86.8%) at a sixth of the size.
 - **With the router:** 91.4%, with only 10.5% sent to the cloud, at a quarter of Gemma's cloud cost. 10 of the 16 escalations are the mandatory $1,000+ claim reviews. LFM3 trails Gemma on novel requests (75.9% vs 89.7%), where it is more often confidently wrong without failing a check.
